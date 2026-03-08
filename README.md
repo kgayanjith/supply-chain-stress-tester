@@ -136,10 +136,8 @@ Possible future improvements include:
 
 ## Author
 **Kalindu Gayanjith**  
-Software Engineer
-
-Bsc (Hons) in Management Information Systems 
-
+Software Engineer |
+Bsc (Hons) in Management Information Systems |
 MSc in Artificial Intelligence (reading)
 
 ## Conclusion
