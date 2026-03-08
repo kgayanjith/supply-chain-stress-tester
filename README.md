@@ -137,8 +137,10 @@ Possible future improvements include:
 ## Author
 **Kalindu Gayanjith**  
 Software Engineer
+
 Bsc (Hons) in Management Information Systems 
-MSc in Artificial Intelligence
+
+MSc in Artificial Intelligence (reading)
 
 ## Conclusion
 Supply Chain Stress Tester System is a full ERP-based project that combines core business management functions with AI-based supply chain risk management. It is designed to support CRM, sales, product, inventory, warehouse, material, and user management while also introducing intelligent analysis for identifying and evaluating supply chain risks. As an MSc in AI project, it demonstrates how artificial intelligence can be integrated into enterprise systems to improve both operational control and strategic decision-making.
