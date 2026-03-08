@@ -1,0 +1,42 @@
+<?php
+
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductCategoryController;
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
+
+Route::get('/', function () {
+    return Inertia::render('Auth/Login', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
+
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // customer Routes
+    Route::prefix('customer')->group(function () {
+        Route::get('/', [CustomerController::class, 'index'])->name('customer.index');
+        Route::get('/create', [CustomerController::class, 'create'])->name('customer.create');
+        Route::post('/store', [CustomerController::class, 'store'])->name('customer.store');
+        Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
+        Route::post('/update/{customer}', [CustomerController::class, 'update'])->name('customer.update');
+        Route::delete('/delete/{customer}', [CustomerController::class, 'destroy'])->name('customer.delete');
+    });
+
+    // Product category Routes
+    Route::prefix('product-category')->group(function () {
+        Route::get('/', [ProductCategoryController::class, 'index'])->name('pcategory.index');
+        Route::get('/create', [ProductCategoryController::class, 'create'])->name('pcategory.create');
+        Route::post('/store', [ProductCategoryController::class, 'store'])->name('pcategory.store');
+        Route::get('/edit/{id}', [ProductCategoryController::class, 'edit'])->name('pcategory.edit');
+        Route::post('/update/{pcategory}', [ProductCategoryController::class, 'update'])->name('pcategory.update');
+        Route::delete('/delete/{pcategory}', [ProductCategoryController::class, 'destroy'])->name('pcategory.delete');
+    });
+});
