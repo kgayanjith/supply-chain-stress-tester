@@ -3,6 +3,7 @@
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -38,5 +39,15 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         Route::get('/edit/{id}', [ProductCategoryController::class, 'edit'])->name('pcategory.edit');
         Route::post('/update/{pcategory}', [ProductCategoryController::class, 'update'])->name('pcategory.update');
         Route::delete('/delete/{pcategory}', [ProductCategoryController::class, 'destroy'])->name('pcategory.delete');
+    });
+
+    // Product Routes
+    Route::prefix('product')->group(function () {
+        Route::get('/', [ProductController::class, 'index'])->name('product.index');
+        Route::get('/create', [ProductController::class, 'create'])->name('product.create');
+        Route::post('/store', [ProductController::class, 'store'])->name('product.store');
+        Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+        Route::post('/update/{product}', [ProductController::class, 'update'])->name('product.update');
+        Route::delete('/delete/{product}', [ProductController::class, 'destroy'])->name('product.delete');
     });
 });

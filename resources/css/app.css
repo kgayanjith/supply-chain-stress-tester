@@ -332,7 +332,7 @@
     background-color: transparent !important;
 }
 .btn-main-create {
-    background: var(--primary-color) !important;
+    background: #000 !important;
     color: #ffffff !important;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
     border: 0 !important;
@@ -538,8 +538,8 @@ table.dataTable th {
 .dt-paging .dt-paging-button.current:focus,
 .dt-paging .dt-paging-button.current:active,
 .dt-paging .dt-paging-button.current:disabled {
-  border: 1.5px solid var(--primary-color) !important;
-  background: var(--primary-color) !important;
+  border: 1.5px solid #000 !important;
+  background: #000 !important;
   color: #fff !important;
   opacity: 1 !important;                 
   -webkit-text-fill-color: #fff !important;
@@ -548,4 +548,6 @@ table.dataTable th {
 .dt-layout-row .dt-layout-cell.dt-layout-start .dt-info{
     display: none !important;
 }
-
+.product-description{
+    font-size: 13px !important;
+}

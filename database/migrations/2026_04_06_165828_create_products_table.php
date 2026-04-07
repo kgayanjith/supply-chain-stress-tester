@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->foreignId('product_category_id')->nullable()->constrained()->nullOnDelete();
             $table->text('description')->nullable();
             $table->string('price');
             $table->bigInteger('quantity');

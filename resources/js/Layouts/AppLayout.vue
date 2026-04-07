@@ -74,7 +74,10 @@
                                     data-bs-parent="#salesAccordion">
                                     <div class="accordion-body pt-0 px-1">
                                          <div class="nav-item text-black">
-                                            <Link href="" class="nav-link">
+                                            <Link :href="route('product.index')" class="nav-link" v-bind:class="{
+                                                active: addActiveClass(['product.index', 'product.create'])
+                                            }"
+                                            >
                                             <i class="fa-solid fa-bag-shopping"></i>
                                             Products 
                                             </Link>

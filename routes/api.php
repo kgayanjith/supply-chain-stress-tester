@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\ProductCategoryController;
+use App\Http\Controllers\Api\V1\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -12,5 +13,6 @@ Route::get('/user', function (Request $request) {
 
 Route::prefix('v1')->group(function () {
     Route::get('/product-categories', [ProductCategoryController::class, 'index']);
-    Route::get('/ping', fn () => response()->json(['ok' => true]));
+    Route::get('/products', [ProductController::class, 'index']);
+    // Route::get('/ping', fn () => response()->json(['ok' => true]));
 });

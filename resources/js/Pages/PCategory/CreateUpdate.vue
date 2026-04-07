@@ -14,8 +14,8 @@
                             <sup>*</sup>
                         </label>
                         <br />
-                        <FileInputComponent name="image" id="image" :prvImage="Image" v-model="form.image"
-                            :isRequired="false" />
+                        <FileInputComponent name="image" id="image" :prvImage="previewSrc" v-model="form.image"
+                            :isRequired="false" :isMultiple="false" />
                         <div class="text-danger">{{ form.errors.image }}</div>
                     </div>
 
@@ -56,7 +56,7 @@ export default {
         StatusComponent,
         Link,
         HeaderComponent,
-        FileInputComponent
+        FileInputComponent,
     },
     data() {
         return {
@@ -90,7 +90,7 @@ export default {
 
     },
     computed: {
-        Image() {
+        previewSrc() {
             return this.productcategories ? this.productcategories?.media[0]?.original_url ?? "" : "";
         }
     },
@@ -102,7 +102,7 @@ export default {
                 this.productcategories ? route('pcategory.update', this.form.id)
                     : route('pcategory.store'),
                 {
-                    
+
 
                     onSuccess: () => {
                         this.form.reset();
@@ -153,7 +153,7 @@ export default {
 
 
 
-        }
+        },
     }
 }
 </script>

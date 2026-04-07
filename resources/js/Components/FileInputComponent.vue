@@ -1,23 +1,25 @@
 <template>
   <div>
-    <div
-      :id="id + 'ImagePreview'"
-      :class="'image-preview-box ' + parentCls"
-      :style="{ backgroundImage: `url(${previewSrc})` }"
-      @click="openFile"
-    ></div>
+    <!-- Single preview (isMultiple = false) -->
+    <div v-if="!isMultiple" :id="id + 'ImagePreview'" :class="'image-preview-box ' + parentCls"
+      :style="{ backgroundImage: `url('${previewSrc}')` }" @click="openFile"></div>
 
-    <input
-      ref="file"
-      type="file"
-      :id="id"
-      class="form-control"
-      style="display: none !important"
-      @change="handleFileChange"
-      :multiple="isMultiple"
-      :required="isRequired"
-      accept="image/*"
-    />
+    <!-- Multiple previews (isMultiple = true) -->
+    <div v-else style="display: flex; flex-wrap: wrap; gap: 8px;">
+      <div v-for="(src, index) in multiplePreviews" :key="index" style="position: relative; display: inline-block;">
+        <div :class="'image-preview-box ' + parentCls" :style="{ backgroundImage: `url('${src}')` }"></div>
+        <span @click="removeImage(index)" style="position: absolute; top: -6px; right: -6px; background: red; color: white;
+             border-radius: 50%; width: 18px; height: 18px; text-align: center;
+             line-height: 18px; font-size: 12px; cursor: pointer;">&times;</span>
+      </div>
+
+      <!-- Add more button -->
+      <div :class="'image-preview-box ' + parentCls"
+        :style="{ backgroundImage: `url('${prvImage || '/images/file-upload.png'}')` }" @click="openFile"></div>
+    </div>
+
+    <input ref="file" type="file" :id="id" class="form-control" style="display: none !important"
+      @change="handleFileChange" :multiple="isMultiple" :required="isRequired" accept="image/*" />
   </div>
 </template>
 
@@ -33,7 +35,9 @@ export default {
   },
   data() {
     return {
-      localPreview: "", // ✅ new selected preview (base64)
+      localPreview: "",         // single mode preview
+      multiplePreviews: [],     // multiple mode previews
+      allFiles: [],             // accumulated files for multiple mode
     };
   },
   computed: {
@@ -47,23 +51,43 @@ export default {
     },
     handleFileChange(e) {
       const files = e.target.files;
-      const file = this.isMultiple ? files : (files[0] || null);
+      if (!files || files.length === 0) return;
 
-      // emit file(s)
-      this.$emit("update:modelValue", file);
+      if (!this.isMultiple) {
+        // --- Single mode (unchanged) ---
+        const file = files[0];
+        this.$emit("update:modelValue", file);
 
-      // preview (only first file)
-      const first = files && files[0] ? files[0] : null;
-      if (!first) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.localPreview = reader.result;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        // --- Multiple mode ---
+        const newFiles = Array.from(files);
 
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.localPreview = reader.result; // ✅ replaces old preview
-      };
-      reader.readAsDataURL(first);
+        // Accumulate files
+        this.allFiles = [...this.allFiles, ...newFiles];
+        this.$emit("update:modelValue", this.allFiles);
 
-      // allow selecting same file again
+        // Generate previews for newly added files
+        newFiles.forEach((file) => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            this.multiplePreviews.push(reader.result);
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      // Allow selecting same file again
       e.target.value = "";
+    },
+    removeImage(index) {
+      this.multiplePreviews.splice(index, 1);
+      this.allFiles.splice(index, 1);
+      this.$emit("update:modelValue", this.allFiles);
     },
   },
 };
@@ -79,5 +103,6 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   display: inline-block;
+  z-index: 99999;
 }
 </style>
