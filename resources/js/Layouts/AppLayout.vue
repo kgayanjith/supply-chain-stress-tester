@@ -75,7 +75,7 @@
                                     <div class="accordion-body pt-0 px-1">
                                          <div class="nav-item text-black">
                                             <Link :href="route('product.index')" class="nav-link" v-bind:class="{
-                                                active: addActiveClass(['product.index', 'product.create'])
+                                                active: addActiveClass(['product.index', 'product.create', 'product.edit'])
                                             }"
                                             >
                                             <i class="fa-solid fa-bag-shopping"></i>
@@ -96,6 +96,14 @@
                                             }">
                                             <i class="fa-solid fa-users"></i>
                                             Customers
+                                            </Link>
+                                        </div>
+                                        <div class="nav-item text-black">
+                                            <Link :href="route('banner.index')" class="nav-link" v-bind:class="{
+                                                active: addActiveClass(['banner.index', 'banner.create', 'banner.edit']),
+                                            }">
+                                         <i class="fa-solid fa-images"></i>
+                                            Banners
                                             </Link>
                                         </div>
                                         <div class="nav-item text-black">

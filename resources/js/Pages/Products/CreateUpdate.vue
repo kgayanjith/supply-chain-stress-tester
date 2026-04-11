@@ -4,7 +4,7 @@
             <div class="row">
                 <InputComponent id="name" label="Product Name" v-model="form.name" :error="form.errors.name"
                     :isRequired="true" />
-                <SelectCompo id="category" label="Category" v-model="form.category"
+                <SelectCompo id="category" label="Category" v-model="form.category" :isMultiple="false"
                     :options="productcategories.map(c => ({ value: c.id, label: c.name }))"
                     placeholder="Select category" />
                 <InputComponent id="quantity" label="Product Quantity" type="number" v-model="form.quantity"

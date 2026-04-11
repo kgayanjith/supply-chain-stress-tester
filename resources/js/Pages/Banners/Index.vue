@@ -1,53 +1,43 @@
 <template>
     <AppLayout>
         <main>
-            <HeaderComponent title="Products" subtitle="Manage Products" />
+            <HeaderComponent title="Banners" subtitle="Manage Banners" />
             <div class="wrapper d-flex justify-content-start">
-                <Link class="btn btn-main-create py-1 px-4" :href="route('product.create')"><i
+                <Link class="btn btn-main-create py-1 px-4" :href="route('banner.create')"><i
                     class="fa-solid fa-plus pe-4"></i>Add New</Link>
             </div>
             <div class="table-responsive">
-                <table class="table table-hover" id="productsTable">
+                <table class="table table-hover" id="bannersTable">
                     <thead class="">
-                        <tr class="text-center">
-                            <th class="fw-bold" scope="col">ID</th>
-                            <th class="fw-bold" scope="col">Product Name</th>
-                            <th class="fw-bold" scope="col">Product Description</th>
-                            <th class="fw-bold" scope="col">Category</th>
+                        <tr>
+                            <th class="fw-bold text-start" scope="col">ID</th>
+                            <th class="fw-bold" scope="col">Name</th>
                             <th class="fw-bold text-center" scope="col">Image</th>
-                            <th class="fw-bold" scope="col">Quantity</th>
-                            <th class="fw-bold" scope="col">Price</th>
-                            <th class="fw-bold" scope="col">Status</th>
+                            <th class="fw-bold text-center" scope="col">Status</th>
                             <th class="fw-bold" scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="product in products" :key="product.id">
-                            <td class="text-start">{{ product.id }}</td>
-                            <td class="text-start">{{ product.name }}</td>
-                            <td class="text-secondary product-description" :class="product.description ||
-                                'text-center text-secondary'
-                                ">
-                                - {{ product.description || "No Description" }}
-                            </td>
-                            <td class="text-center">{{ product.category ? product.category.name : 'no category' }}</td>
+                        <tr v-for="banner in banners" :key="banner.id">
+                            <td class="text-start">{{ banner.id }}</td>
+                            <td class="text-start">{{ banner.name }}</td>
                             <td class="text-center">
-                                <span v-for="i in product.media" :key="i.index">
-                                    <img :src="i.original_url" alt="" class="mx-1" width="25" height="25" />
+                                <span>
+                                    <img :src="banner.media[0].original_url" alt="" width="50" height="35" />
                                 </span>
                             </td>
-                            <td class="text-start">{{ product.quantity }}</td>
-                            <td class="text-start">{{ product.price }}.00</td>
-                            <td class="text-center"><span :class="product.status == 1
+                         
+                            <td class="text-center"><span :class="banner.status == 1
                                 ? 'badge text-bg-primary'
                                 : 'badge text-bg-danger'
                                 ">
                                     {{
-                                        product.status == 1
+                                        banner.status == 1
                                             ? "Active"
                                             : "Disabled"
                                     }}
                                 </span></td>
+                        
                             <td>
                                 <div class="btn-group">
                                     <div type="button" class="drop-down-btn" data-bs-toggle="dropdown"
@@ -56,12 +46,12 @@
                                     </div>
                                     <ul class="dropdown-menu" style="opacity: 9999">
                                         <li>
-                                            <Link class="dropdown-item action_edit" :data-id="product.id">Edit</Link>
+                                            <Link class="dropdown-item action_edit" :data-id="banner.id">Edit</Link>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item " data-bs-toggle="modal"
-                                                data-bs-target="#staticBackdropproduct"
-                                                @click="selectedId = product.id">Delete</a>
+                                            <span class="dropdown-item " data-bs-toggle="modal"
+                                                data-bs-target="#staticBackdropbanner"
+                                                @click="selectedId = banner.id">Delete</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -71,7 +61,7 @@
                 </table>
             </div>
         </main>
-        <div class="modal fade" id="staticBackdropproduct" data-bs-backdrop="static" data-bs-keyboard="false"
+        <div class="modal fade" id="staticBackdropbanner" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -113,29 +103,29 @@ export default {
         }
     },
     props: {
-        products: Array
+        banners: Array
     },
     mounted() {
 
         const vm = this;
 
         $(document).ready(function () {
-            $('#productsTable').DataTable();
+            $('#bannersTable').DataTable();
         });
 
-        $("#productsTable").on("click", ".action_edit", function (evt) {
+        $("#bannersTable").on("click", ".action_edit", function (evt) {
             evt.preventDefault();
             const id = $(this).data("id");
-            vm.$inertia.visit(route("product.edit", id));
+            vm.$inertia.visit(route("banner.edit", id));
             // console.log(id);
         });
     },
     methods: {
         deleteCategory(selectedId) {
             // console.log(selectedId);
-            this.$inertia.delete(route("product.delete", selectedId), {
+            this.$inertia.delete(route("banner.delete", selectedId), {
                 onSuccess: () => {
-                    const modal = bootstrap.Modal.getInstance(document.getElementById('staticBackdropproduct'));
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('staticBackdropbanner'));
                     modal.hide();
                     
                 }

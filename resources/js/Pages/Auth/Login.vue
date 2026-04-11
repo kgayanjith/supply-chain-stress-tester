@@ -1,5 +1,6 @@
 <script setup>
 import Checkbox from '@/Components/Checkbox.vue';
+import InputError from '@/Components/InputError.vue';
 import { Head, useForm } from '@inertiajs/vue3';
 
 
@@ -44,7 +45,7 @@ const submit = () => {
                     <input type="text" class="form-control rounded py-2" id="email" v-model="form.email"
                         placeholder="Email" autofocus autocomplete="username" required>
                 </div>
-                <InputError class="mt-2 text-danger" :message="form.errors.email" />
+                
                 <div class="mt-4">
                     <div class="mb-3 field">
                         <!-- <label for="formGroupExampleInput2" class="form-label">Password</label> -->
@@ -52,6 +53,7 @@ const submit = () => {
                             placeholder="Password" autocomplete="current-password" required>
                     </div>
                 </div>
+                <InputError class="mt-2 text-danger" :message="form.errors.email" />
                 <div class="block mt-4">
                     <label class="flex items-center">
                         <Checkbox v-model:checked="form.remember" class="" name="remember"  />

@@ -37,8 +37,8 @@
                   ">
                   {{
                     pcategory.status == 1
-                      ? "Activated"
-                      : "Deactivated"
+                      ? "Active"
+                      : "Disabled"
                   }}
                 </span>
               </td>

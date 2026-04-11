@@ -28,8 +28,8 @@
               <td>{{ customer.address }}</td>
               <td>{{ customer.phone }}</td>
               <td class="text-center">
-                <span :class="customer.status == 1 ? 'badge text-bg-success' : 'badge text-bg-danger'">
-                  {{ customer.status == 1 ? 'Activated' : 'Deactivated' }}
+                <span :class="customer.status == 1 ? 'badge text-bg-primary' : 'badge text-bg-danger'">
+                  {{ customer.status == 1 ? 'Active' : 'Disabled' }}
                 </span>
               </td>
               <td>
