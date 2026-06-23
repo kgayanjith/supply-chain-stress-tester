@@ -1,21 +1,23 @@
 <template>
   <AppLayout>
-   <main>
-    <!-- Line Chart -->
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card p-3">
-           <div style="height: 320px; margin-top: 20px;">
-            <canvas ref="lineChart"></canvas>
+    <main>
+      <!-- Line Chart -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card p-3">
+            <div style="height: 320px; margin-top: 20px;">
+              <canvas ref="lineChart"></canvas>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-   </main>
+    </main>
   </AppLayout>
 </template>
 
 <script>
+
+import axios from "axios";
 import InputComponent from '@/Components/InputComponent.vue';
 import AppLayout from '@/Layouts/SideNavBar.vue';
 import {
@@ -83,11 +85,14 @@ export default {
         },
       },
     });
+
+
   },
 
   beforeUnmount() {
     if (this.chart) this.chart.destroy();
   },
+
 }
 </script>
 

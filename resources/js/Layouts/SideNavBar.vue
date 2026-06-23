@@ -12,7 +12,7 @@
                 <!-- Logo/Header -->
                 <div class="sidebar-header">
                     <div class="logo-icon">
-                        <img src="/Images/scst.png" class="w-100" alt="">
+                        <img src="/Images/resilimart.png" class="w-100" alt="">
                     </div>
 
                 </div>
@@ -42,7 +42,7 @@
                                             <span class="position-relative">
                                                 Notifications
                                                 <span
-                                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger ms-2">
+                                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger ms-2 text-white">
                                                     2
                                                 </span>
                                             </span>
@@ -60,6 +60,47 @@
                             </div>
                         </div>
                     </div>
+                     <div>
+                        <div class="accordion accordion-flush" id="inventoryAccordion">
+                            <div class="accordion-item">
+                                <div class="side-bar-header">
+                                    <p class="text-dark text-uppercase">Shipping & Tracking</p>
+                                </div>
+                                <div id="inventory" class="accordion-collapse collapse show"
+                                    data-bs-parent="#inventoryAccordion">
+                                    <div class="accordion-body pt-0 px-1">
+                                        <div class="nav-item text-black">
+                                            <Link href="" class="nav-link">
+                                            <i class="fa-solid fa-boxes-stacked"></i>
+                                            Ports
+                                            </Link>
+                                        </div>
+                                        <div class="nav-item text-black">
+                                            <Link href="" class="nav-link">
+                                            <i class="fa-solid fa-route"></i>
+                                            Shipping Routes
+                                            </Link>
+                                        </div>
+                                        <div class="nav-item text-black">
+                                            <Link href="" class="nav-link">
+                                            <i class="fa-solid fa-ship"></i>
+                                            Shipment Detials
+                                            </Link>
+                                        </div>
+                                        <div class="nav-item text-black">
+                                            <Link :href="route('shipment.index')"  class="nav-link" v-bind:class="{
+                                                active: addActiveClass(['shipment.index', 'shipment.tracking']),
+                                            }">
+                                           <i class="fa-solid fa-location-crosshairs"></i>
+                                            Shipments & Tracking
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
                     <div>
                         <div class="accordion accordion-flush" id="salesAccordion">
                             <div class="accordion-item">
@@ -128,6 +169,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div>
                         <div class="accordion accordion-flush" id="purchasingAccordion">
                             <div class="accordion-item">
@@ -160,7 +202,7 @@
                             </div>
                         </div>
                     </div>
-                    <div>
+                   
                         <div class="accordion accordion-flush" id="inventoryAccordion">
                             <div class="accordion-item">
                                 <div class="side-bar-header">
@@ -193,20 +235,12 @@
                                             Stock On Hand
                                             </Link>
                                         </div>
-                                        <div class="nav-item text-black">
-                                            <Link href="" class="nav-link">
-                                            <i class="fa-solid fa-location-crosshairs"></i>
-                                            Serial Tracking
-                                            </Link>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </nav>
-
                 <!-- User Profile Section -->
             </div>
         </aside>

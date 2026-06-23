@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShipmentController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -77,6 +78,16 @@ Route::prefix('backend')->group(function () {
             Route::get('/edit/{id}', [BannerController::class, 'edit'])->name('banner.edit');
             Route::post('/update/{banner}', [BannerController::class, 'update'])->name('banner.update');
             Route::delete('/delete/{banner}', [BannerController::class, 'destroy'])->name('banner.delete');
+        });
+
+        // Shipment Routes
+        Route::prefix('shipments')->group(function () {
+            Route::get('/', [ShipmentController::class, 'index'])->name('shipment.index');
+            Route::get('/tracking/{id}', [ShipmentController::class, 'track'])->name('shipment.tracking');
+            // Route::post('/store', [BannerController::class, 'store'])->name('banner.store');
+            // Route::get('/edit/{id}', [BannerController::class, 'edit'])->name('banner.edit');
+            // Route::post('/update/{banner}', [BannerController::class, 'update'])->name('banner.update');
+            // Route::delete('/delete/{banner}', [BannerController::class, 'destroy'])->name('banner.delete');
         });
     });
 });

@@ -4,7 +4,7 @@
             <div class="container-fluid px-lg-5">
                 <Link class="navbar-brand">
                 <div class="nav-bar-logo-wrapper">
-                    <img src="/Images/logo-frontend.png" width="70" alt="">
+                    <img src="/Images/resilimart-black.png" width="120" alt="">
                 </div>
                 </Link>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -14,17 +14,20 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <Link class="nav-link" href="#">Home</Link>
+                        <li class="nav-item mx-1">
+                            <Link class="nav-link active px-3" href="#">Home</Link>
                         </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" href="#">Products</Link>
+                        <li class="nav-item mx-1">
+                            <Link class="nav-link px-3" href="#">All Products</Link>
                         </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" href="#">Categories</Link>
+                        <li class="nav-item mx-1">
+                            <Link class="nav-link px-3" href="#">Categories</Link>
                         </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" href="#">Cart</Link>
+                        <li class="nav-item mx-1">
+                            <Link class="nav-link px-3" href="#">FAQ</Link>
+                        </li>
+                        <li class="nav-item mx-1">
+                            <Link class="nav-link px-3" href="#">About Us</Link>
                         </li>
                     </ul>
                     <div class="d-md-none">

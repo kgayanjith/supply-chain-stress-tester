@@ -31,10 +31,10 @@ const submit = () => {
     <div class="d-flex justify-content-center align-items-center min-vh-100">
         <div class="card px-4 py-5 rounded-5 border-0" style="width: 100%; max-width: 380px;">
             <!-- Logo -->
-            <div class="row justify-content-center pb-4">
+            <div class="row justify-content-center pb-5">
                 <div class="col-8">
-                    <div class="img-wrapper">
-                        <img src="/Images/scst.png" class="w-100 h-100" alt="Foodzy Logo">
+                    <div class="img-wrapper text-center">
+                        <img src="/Images/resilimart.png" class="" width="200" alt="Foodzy Logo">
                     </div>
                 </div>
             </div>

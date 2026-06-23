@@ -169,7 +169,7 @@
     background: linear-gradient(135deg, #06b6d4, #2563eb) !important;
     color: #ffffff !important;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
-    font-weight: 550 !important;
+    /* font-weight: 550 !important; */
 }
 .nav-link:focus,
 .nav-link:hover {
@@ -336,7 +336,7 @@
     color: #ffffff !important;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
     border: 0 !important;
-    font-weight: 550 !important;
+    /* font-weight: 550 !important; */
 }
 .form-select {
     box-shadow: none !important;

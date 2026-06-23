@@ -1,20 +1,43 @@
 <template>
   <AppLayout>
-    <h1 class="vh-100">landing page sucessfully rendered</h1>
-
+    <div class="mt-4">
+      <HerosectionSlider />
+      <Categories :categories="categories" />
+      <Latestproducts />
+      <Mostordered />
+      <Promotionbanner :banners="banners" />
+    </div>
   </AppLayout>
 
 </template>
 
 <script>
 import AppLayout from '@/Layouts/AppLayout.vue';
+import HerosectionSlider from './partials/HerosectionSlider.vue';
+import Categories from './partials/Categories.vue';
+import Latestproducts from './partials/Latestproducts.vue';
+import Mostordered from './partials/Mostordered.vue';
+import Promotionbanner from './partials/Promotionbanner.vue';
 
 
 export default {
   components: {
-    AppLayout
+    AppLayout,
+    HerosectionSlider,
+    Categories,
+    Latestproducts,
+    Mostordered,
+    Promotionbanner
+  },
+  props: {
+    banners: Object,
+    categories: Object
   }
 }
 </script>
 
-<style></style>
+<style scoped>
+*{
+    font-family: "DM Sans", sans-serif;
+}
+</style>
