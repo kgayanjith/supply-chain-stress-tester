@@ -1,12 +1,13 @@
 <template>
-    <div class="container-fluid px-lg-5 mt-5">
-        <div>
-            <h3 class="">Our Latest Products</h3>
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-3 mb-3" v-for="product in latestproducts" :key="product.id">
-                <div class="product-wrapper">
-                    <Link class="card rounded-4 p-1" href="/product">
+    <AppLayout>
+        <div class="mt-4 container-fluid px-lg-5">
+            <div>
+                <h3 class="">All Products</h3>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-3 mb-3" v-for="product in allproducts" :key="product.id">
+                    <div class="product-wrapper">
+                        <Link class="card rounded-4 p-1" href="/product">
                         <img :src="product.media[0]?.original_url" class="card-img-top w-100 rounded-3" alt="...">
                         <div class="card-body">
                             <div class="d-flex justify-content-between mb-2">
@@ -39,23 +40,24 @@
                                 </Link>
                             </div>
                         </div>
-                    </Link>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </AppLayout>
 </template>
 
 <script>
-import { Link } from '@inertiajs/vue3';
+import AppLayout from '@/Layouts/AppLayout.vue';
 
 
 export default {
     components: {
-        Link
+        AppLayout
     },
     props:{
-         latestproducts:Object
+        allproducts:Object
     }
 }
 </script>

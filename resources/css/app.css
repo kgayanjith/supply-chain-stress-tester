@@ -550,4 +550,8 @@ table.dataTable th {
 }
 .product-description{
     font-size: 13px !important;
+    max-width: 100px !important;
+}
+.description-datatable{
+    max-width: 100px !important;
 }

@@ -1,10 +1,10 @@
 <template>
   <AppLayout>
     <div class="mt-4">
-      <HerosectionSlider />
+      <HerosectionSlider :featuredproducts="featuredproducts" />
       <Categories :categories="categories" />
-      <Latestproducts />
-      <Mostordered />
+      <Latestproducts :latestproducts="latestproducts" />
+      <Mostordered :mostorderedproducts="mostorderedproducts" />
       <Promotionbanner :banners="banners" />
     </div>
   </AppLayout>
@@ -31,7 +31,10 @@ export default {
   },
   props: {
     banners: Object,
-    categories: Object
+    categories: Object,
+    latestproducts:Object,
+    featuredproducts:Object,
+    mostorderedproducts:Object
   }
 }
 </script>

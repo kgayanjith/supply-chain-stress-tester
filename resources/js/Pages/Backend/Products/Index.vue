@@ -12,7 +12,7 @@
                         <tr class="text-center">
                             <th class="fw-bold" scope="col">ID</th>
                             <th class="fw-bold" scope="col">Product Name</th>
-                            <th class="fw-bold" scope="col">Product Description</th>
+                            <!-- <th class="fw-bold description-datatable" scope="col">Product Description</th> -->
                             <th class="fw-bold" scope="col">Category</th>
                             <th class="fw-bold text-center" scope="col">Image</th>
                             <th class="fw-bold" scope="col">Quantity</th>
@@ -25,11 +25,11 @@
                         <tr v-for="product in products" :key="product.id">
                             <td class="text-start">{{ product.id }}</td>
                             <td class="text-start">{{ product.name }}</td>
-                            <td class="text-secondary product-description" :class="product.description ||
+                            <!-- <td class="text-secondary product-description text-truncate" :class="product.description ||
                                 'text-center text-secondary'
                                 ">
                                 - {{ product.description || "No Description" }}
-                            </td>
+                            </td> -->
                             <td class="text-center">{{ product.category ? product.category.name : 'no category' }}</td>
                             <td class="text-center">
                                 <span v-for="i in product.media" :key="i.index">

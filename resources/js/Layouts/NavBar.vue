@@ -15,10 +15,10 @@
                 <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item mx-1">
-                            <Link class="nav-link active px-3" href="#">Home</Link>
+                            <Link class="nav-link px-3" :class="{ active: route().current('home') }" :href="route('home')">Home</Link>
                         </li>
                         <li class="nav-item mx-1">
-                            <Link class="nav-link px-3" href="#">All Products</Link>
+                            <Link class="nav-link px-3" :class="{ active: route().current('allproducts') }" :href="route('allproducts')">All Products</Link>
                         </li>
                         <li class="nav-item mx-1">
                             <Link class="nav-link px-3" href="#">Categories</Link>

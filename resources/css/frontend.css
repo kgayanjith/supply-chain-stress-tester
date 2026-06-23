@@ -80,7 +80,12 @@
     background-color: #000000;
     border-radius: 18px;
     color: #fff;
-    font-weight: 600;
+    font-weight: 500;
+}
+.navbar-nav .nav-link.active:hover{
+
+    color: #fff !important;
+   
 }
 .category-pill{
     font-size: 13px;
@@ -117,6 +122,7 @@ h3,h4,h5,h6,span{
 }
 .product-wrapper .card .product-category-text{
     color: #b4b4b4;
+    font-weight: 300;
 }
 
 .buy-bar {

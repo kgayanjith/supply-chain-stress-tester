@@ -18,49 +18,26 @@
                         <div class="product-wrapper mt-5">
                             <div class="swiper mySwiper bg-white p-2 rounded-4 secondarySlider shadow-sm">
                                 <div class="swiper-wrapper">
-                                    <Link class="swiper-slide">
+                                    <Link class="swiper-slide" v-for="product in featuredproducts.slice(0, 2)"
+                                        :key="product.id">
                                     <div class="row">
                                         <div class="col-7">
                                             <div class="mt-2">
                                                 <span class="grey-shade py-2 px-4 rounded-pill">Featured</span>
                                             </div>
                                             <div class="descriptions px-2 mt-4">
-                                                <h4 class="text-truncate">Apex X Pro Smartwatch</h4>
-                                                <p class="mt-3">Featuring a vibrant
-                                                    touch display, fitness tracking and a
-                                                    durable comfortable design</p>
-                                                <h5 class="mt-4">Rs 22500.00</h5>
+                                                <h4 class="text-truncate">{{ product.name }}</h4>
+                                                <p class="mt-3 two-line-clamp">{{ product.description }}</p>
+                                                <h5 class="mt-4">Rs {{ product.price }}.00</h5>
                                             </div>
                                         </div>
                                         <div class="col-5">
                                             <div class="img-wrapper-product rounded-4 m-2">
-                                                <img src="/Images/frontend/watch.png" class="w-100 h-100" alt="">
+                                                <img :src="product.media[0]?.original_url" class="w-100 h-100" alt="">
                                             </div>
                                         </div>
                                     </div>
                                     </Link>
-                                    <Link class="swiper-slide">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <div class="mt-2">
-                                                <span class="grey-shade py-2 px-4 rounded-pill">Featured</span>
-                                            </div>
-                                            <div class="descriptions px-2 mt-4">
-                                                <h4 class="text-truncate">Apex X Pro Smartwatch</h4>
-                                                <p class="mt-3">Featuring a vibrant
-                                                    touch display, fitness tracking and a
-                                                    durable comfortable design</p>
-                                                <h5 class="mt-4">Rs 22500.00</h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-5">
-                                            <div class="img-wrapper-product rounded-4 m-2">
-                                                <img src="/Images/frontend/watch.png" class="w-100 h-100" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </Link>
-
                                 </div>
                                 <div class="swiper-pagination"></div>
                             </div>
@@ -69,41 +46,24 @@
                 </div>
                 <div class="col-md-6">
 
-                    <div class="column-wrapper p-4 rounded rounded-4 right-column">
+                    <div class="column-wrapper p-4 rounded rounded-4 right-column h-100">
 
                         <div class="swiper mySwiper mainSlider">
                             <div class="swiper-wrapper">
-                                <Link class="swiper-slide pb-1">
-                                    <div class="mt-2">
-                                        <span class="white-shade py-2 px-4 rounded-pill">Featured</span>
-                                    </div>
-                                    <div class="image-wrapper text-center">
-                                        <img src="/Images/frontend/apple.png" class="w-75" alt="">
-                                    </div>
-                                    <div class="description-box bg-white p-3 rounded-4 shadow-sm">
-                                        <h3 class="">Apple AirPods Max USB-C Noise Cancelling</h3>
-                                        <p class="mt-3">Experience the pinnacle of performance and design with the Apple
-                                            MacBook Pro 16-inch, featuring a stunning Retina display, </p>
-                                        <h5 class="mt-4">Rs 750000.00</h5>
+                                <Link class="swiper-slide pb-1" v-for="product in featuredproducts.slice(2, 4)" :key="product.id">
+                                <div class="mt-2">
+                                    <span class="white-shade py-2 px-4 rounded-pill">Featured</span>
+                                </div>
+                                <div class="image-wrapper text-center">
+                                    <img :src="product.media[0]?.original_url" class="w-50" alt="">
+                                </div>
+                                <div class="description-box bg-white p-3 rounded-4 shadow-sm">
+                                    <h3 class="">{{ product.name }}</h3>
+                                    <p class="mt-3 two-line-clamp">{{ product.description }}</p>
+                                    <h5 class="mt-4">Rs {{ product.price }}.00</h5>
 
-                                    </div>
+                                </div>
                                 </Link>
-                                <Link class="swiper-slide mb-1">
-                                    <div class="mt-2">
-                                        <span class="white-shade py-2 px-4 rounded-pill">Featured</span>
-                                    </div>
-                                    <div class="image-wrapper text-center">
-                                        <img src="/Images/frontend/apple.png" class="w-75" alt="">
-                                    </div>
-                                    <div class="description-box bg-white p-3 rounded-4 shadow-sm">
-                                        <h3 class="">Apple AirPods Max USB-C Noise Cancelling</h3>
-                                        <p class="mt-3">Experience the pinnacle of performance and design with the Apple
-                                            MacBook Pro 16-inch, featuring a stunning Retina display, </p>
-                                        <h5 class="mt-4">Rs 750000.00</h5>
-
-                                    </div>
-                                </Link>
-
                             </div>
                             <div class="swiper-pagination"></div>
                         </div>
@@ -124,7 +84,7 @@ export default {
         Link
     },
     props: {
-        banners: Object
+        featuredproducts: Object
     },
     mounted() {
         var swiper1 = new Swiper(".secondarySlider", {
